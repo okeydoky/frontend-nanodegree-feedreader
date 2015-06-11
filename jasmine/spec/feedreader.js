@@ -61,7 +61,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
         it('is hidden by default', function() {
-           expect($('body').hasClass('menu-hidden')).toBeTruthy(); 
+           expect($('body').hasClass('menu-hidden')).toBe(true); 
         });
         
          /* TODO: Write a test that ensures the menu changes
@@ -73,11 +73,11 @@ $(function() {
             var $menuIcon = $('.menu-icon-link');
             // click the first time; menu should appear
             $menuIcon.trigger('click');
-            expect($('body').hasClass('menu-hidden')).toBeFalsy();
+            expect($('body').hasClass('menu-hidden')).toBe(false);
             
             // click the second time; menu should disappear
             $menuIcon.trigger('click');
-            expect($('body').hasClass('menu-hidden')).toBeTruthy();
+            expect($('body').hasClass('menu-hidden')).toBe(true);
         });
     });
     
@@ -113,7 +113,7 @@ $(function() {
         
         it('makes content different', function(done) {
             var newTitle = $('.entry h2').first().text();
-            expect(oldTitle).not.toBe(newTitle);
+            expect(newTitle).not.toBe(oldTitle);
             done();
         });
     });
