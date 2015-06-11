@@ -117,4 +117,32 @@ $(function() {
             done();
         });
     });
+    
+    // Pending Specs
+    describe('New RSS Feed Addition', function() {
+       xit('will increase RSS feeds lenght by 1', function() {
+           var oldLength = allFeeds.length;
+           
+           /* TODO: Add insert RSS feed function here after it is implemented */
+           
+           var newLength = allFeeds.length;
+          exptect(newLenght - oldLength).toBe(1); 
+       });
+       
+       xit('has valid name and url', function() {
+           
+           /* TODO: Add insert RSS feed function here after it is implemented */
+           
+           var length = allFeeds.length;
+           var newFeed = allFeeds[length -1];
+           
+           expect(newFeed.url).toBeDefined();
+           expect(newFeed.url).not.toBeNull();
+           expect(newFeed.url).not.toEqual('');
+           
+           expect(newFeed.name).toBeDefined();
+           expect(newFeed.name).not.toBeNull();
+           expect(newFeed.name).not.toEqual('');
+       });
+    });
 }());
