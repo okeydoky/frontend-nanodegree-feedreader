@@ -118,7 +118,11 @@ $(function() {
         });
     });
     
-    // Pending Specs
+    /* Pending Specs for future features
+     * Allow users to add RSS feed. Once an RSS feed is added:
+     *  1. allFeeds.length should increase by 1
+     *  2. the new feed has valid name and url.
+     */
     describe('New RSS Feed Addition', function() {
        xit('will increase RSS feeds lenght by 1', function() {
            var oldLength = allFeeds.length;
