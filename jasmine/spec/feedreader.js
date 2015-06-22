@@ -79,15 +79,16 @@ $(function() {
     
     describe('New Feed Selection', function() {
         var oldTitle;
-        
-        // load initial RSS feed
-        loadFeed(0, function() {
-            oldTitle = $('.entry h2').first().text();
-        });
-        
-        // Now load a new feed
+
         beforeEach(function(done) {
-            loadFeed(1, done);
+            // load initial RSS feed
+            loadFeed(0, function() {
+                // cache old title when it's done
+                oldTitle = $('.entry h2').first().text();
+                
+                // now load a new feed
+                loadFeed(1, done);
+            });
         });
         
         it('makes content different', function(done) {
