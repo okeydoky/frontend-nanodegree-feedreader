@@ -27,10 +27,7 @@ $(function() {
         });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
-         */
+        // Spec: non-empty URLs
         it('have non-empty URLs', function() {
             allFeeds.forEach(function(feed) {
                 expect(feed.url).toBeDefined();
@@ -39,10 +36,7 @@ $(function() {
             });
         });
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
-         */
+        // Spec: non-empty names
         it('have non-empty names', function() {
             allFeeds.forEach(function(feed) {
                 expect(feed.name).toBeDefined();
@@ -52,23 +46,13 @@ $(function() {
         });
     });
 
-
-    /* TODO: Write a new test suite named "The menu" */
     describe('Menu', function() {
-        /* TODO: Write a test that ensures the menu element is
-         * hidden by default. You'll have to analyze the HTML and
-         * the CSS to determine how we're performing the
-         * hiding/showing of the menu element.
-         */
+        // Spec: Menu is hidden by default
         it('is hidden by default', function() {
-           expect($('body').hasClass('menu-hidden')).toBe(true); 
+            expect($('body').hasClass('menu-hidden')).toBe(true); 
         });
         
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
-          */
+        // Spec: Menu toggle
         it('will appear/hide when menu icon is clicked', function() {
             var $menuIcon = $('.menu-icon-link');
             // click the first time; menu should appear
@@ -81,33 +65,28 @@ $(function() {
         });
     });
     
-    /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {  
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test wil require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+        // load a feed before testing
         beforeEach(function(done) {
             loadFeed(0, done);
         });
         
         it('have at least one entry', function(done) {
-            expect($('.entry').length).toBeGreaterThan(0);
+            expect($('.feed .entry').length).toBeGreaterThan(0);
             done();
         });
     });
     
-    /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
         var oldTitle;
-        beforeEach(function(done) {
+        
+        // load initial RSS feed
+        loadFeed(0, function() {
             oldTitle = $('.entry h2').first().text();
+        });
+        
+        // Now load a new feed
+        beforeEach(function(done) {
             loadFeed(1, done);
         });
         
@@ -124,29 +103,29 @@ $(function() {
      *  2. the new feed has valid name and url.
      */
     describe('New RSS Feed Addition', function() {
-       xit('will increase RSS feeds lenght by 1', function() {
-           var oldLength = allFeeds.length;
+        xit('will increase RSS feeds lenght by 1', function() {
+            var oldLength = allFeeds.length;
            
-           /* TODO: Add insert RSS feed function here after it is implemented */
+            /* TODO: Add insert RSS feed function here after it is implemented */
            
-           var newLength = allFeeds.length;
-          exptect(newLenght - oldLength).toBe(1); 
-       });
+            var newLength = allFeeds.length;
+            exptect(newLenght - oldLength).toBe(1); 
+        });
        
-       xit('has valid name and url', function() {
+        xit('has valid name and url', function() {
            
-           /* TODO: Add insert RSS feed function here after it is implemented */
+            /* TODO: Add insert RSS feed function here after it is implemented */
            
-           var length = allFeeds.length;
-           var newFeed = allFeeds[length -1];
+            var length = allFeeds.length;
+            var newFeed = allFeeds[length -1];
            
-           expect(newFeed.url).toBeDefined();
-           expect(newFeed.url).not.toBeNull();
-           expect(newFeed.url).not.toEqual('');
+            expect(newFeed.url).toBeDefined();
+            expect(newFeed.url).not.toBeNull();
+            expect(newFeed.url).not.toEqual('');
            
-           expect(newFeed.name).toBeDefined();
-           expect(newFeed.name).not.toBeNull();
-           expect(newFeed.name).not.toEqual('');
-       });
+            expect(newFeed.name).toBeDefined();
+            expect(newFeed.name).not.toBeNull();
+            expect(newFeed.name).not.toEqual('');
+        });
     });
 }());
